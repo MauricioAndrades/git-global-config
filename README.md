@@ -88,6 +88,42 @@ $ git checkout -b `<branch>` --track `<remote>`/`<branch>`
 >           --no-rerere-autoupdate -m `<msg>` `<commit>`...
 >   git merge `<msg>` HEAD `<commit>`...
 >   git merge --abort
+>   
+
+# `git config` [options]
+
+Config file location
+    --global              use global config file
+    --system              use system config file
+    --local               use repository config file
+    -f, --file <file>     use given config file
+    --blob <blob-id>      read config from given blob object
+
+>     --get                 get value: name [value-regex]
+>     --get-all             get all values: key [value-regex]
+>     --get-regexp          get values for regexp: name-regex [value-regex]
+>     --get-urlmatch        get value specific for the URL: section[.var] URL
+>     --replace-all         replace all matching variables: name value [value_regex]
+>     --add                 add a new variable: name value
+>     --unset               remove a variable: name [value-regex]
+>     --unset-all           remove all matches: name [value-regex]
+>     --rename-section      rename section: old-name new-name
+>     --remove-section      remove a section: name
+>     -l, --list            list all
+>     -e, --edit            open an editor
+>     --get-color <slot>    find the color configured: [default]
+>     --get-colorbool <slot>
+>                           find the color setting: [stdout-is-tty]
+> 
+> Type
+>     --bool                value is "true" or "false"
+>     --int                 value is decimal number
+>     --bool-or-int         value is --bool or --int
+>     --path                value is a path (file or directory name)
+> 
+> Other
+>     -z, --null            terminate values with NUL byte
+>     --includes            respect include directives on lookup
 
 
 #FULL COMMAND LIST:
