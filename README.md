@@ -31,9 +31,11 @@ Whenever you're confused about git, come read this cheat sheet. Remember that al
 >    tree.
 
 #### Commit changes in staged files
+
 `$ git commit -m "<commit message>"` - __Fill Me Out__
 
 ####Branching
+
 `$ git branch <branch name>` - __Fill Me Out__
 
 `$ git branch` - List, create, or delete branches
@@ -61,14 +63,14 @@ Whenever you're confused about git, come read this cheat sheet. Remember that al
 
 git checkout `<branch>`
 
-> To prepare for working on `<branch>`, switch to it by updating the
-> index and the files in the working tree, and by pointing HEAD at
-> the branch. Local modifications to the files in the working tree
-> are kept, so that they can be committed to the `<branch>`.
-> 
-> If `<branch>` is not found but there does exist a tracking branch in
-> exactly one remote (call it `<remote>`) with a matching name, treat
-> as equivalent to
+    > To prepare for working on `<branch>`, switch to it by updating the
+    > index and the files in the working tree, and by pointing HEAD at
+    > the branch. Local modifications to the files in the working tree
+    > are kept, so that they can be committed to the `<branch>`.
+    >
+    > If `<branch>` is not found but there does exist a tracking branch in
+    > exactly one remote (call it `<remote>`) with a matching name, treat
+    > as equivalent to
 
 $ git checkout -b `<branch>` --track `<remote>`/`<branch>`
 
@@ -114,13 +116,13 @@ Config file location
 >     --get-color <slot>    find the color configured: [default]
 >     --get-colorbool <slot>
 >                           find the color setting: [stdout-is-tty]
-> 
+>
 > Type
 >     --bool                value is "true" or "false"
 >     --int                 value is decimal number
 >     --bool-or-int         value is --bool or --int
 >     --path                value is a path (file or directory name)
-> 
+>
 > Other
 >     -z, --null            terminate values with NUL byte
 >     --includes            respect include directives on lookup
