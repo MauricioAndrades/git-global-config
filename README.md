@@ -22,9 +22,9 @@ Whenever you're confused about git, come read this cheat sheet. Remember that al
 `$ git log -p filename` __Fill Me Out__
 
 #### Stage files to commit
-`$ git add `<filename>`` - __Fill Me Out__
+`$ git add `<filename>`` - Add file contents to the index
 
-`$ git add -A` - -A, --all, --no-ignore-removal
+`$ git add -A--all, --no-ignore-removal` Tell the command to automatically stage files that have been modified and deleted, but new files you have not told Git about are not affected.
 >    Update the index not only where the working tree has a file
 >    matching `<pathspec>` but also where the index already has an entry.
 >    This adds, modifies, and removes index entries to match the working
@@ -32,7 +32,7 @@ Whenever you're confused about git, come read this cheat sheet. Remember that al
 
 #### Commit changes in staged files
 
-`$ git commit -m "<commit message>"` - __Fill Me Out__
+`$ git commit -m "<commit message>"` - Record changes to the repository
 
 ####Branching
 
