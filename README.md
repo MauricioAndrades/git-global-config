@@ -39,45 +39,46 @@ Whenever you're confused about git, come read this cheat sheet. Remember that al
 `$ git branch <branch name>` - __Fill Me Out__
 
 `$ git branch` - List, create, or delete branches
->         git branch --color=`<when>` | --no-color -r | -a
->                 --list -v --abbrev=`<length>` | --no-abbrev
->                 --column=`<options>` | --no-column
->                 (--merged | --no-merged | --contains) `<commit>` `<pattern>`...
->         git branch --set-upstream | --track | --no-track -l -f `<branchname>` <start-point>
->         git branch (--set-upstream-to=`<upstream>` | -u `<upstream>`) `<branchname>`
->         git branch --unset-upstream `<branchname>`
->         git branch (-m | -M) `<oldbranch>` `<newbranch>`
->         git branch (-d | -D) -r `<branchname>`...
->         git branch --edit-description `<branchname>`
+
+    git branch --color=`<when>` | --no-color -r | -a
+            --list -v --abbrev=`<length>` | --no-abbrev
+            --column=`<options>` | --no-column
+            (--merged | --no-merged | --contains) `<commit>` `<pattern>`...
+    git branch --set-upstream | --track | --no-track -l -f `<branchname>` <start-point>
+    git branch (--set-upstream-to=`<upstream>` | -u `<upstream>`) `<branchname>`
+    git branch --unset-upstream `<branchname>`
+    git branch (-m | -M) `<oldbranch>` `<newbranch>`
+    git branch (-d | -D) -r `<branchname>`...
+    git branch --edit-description `<branchname>`
 
 `$ git checkout <branch name>` - Checkout a branch or paths to the working tree
 
 #### Synopsis:
 
->        git checkout -q -f -m `<branch>`
->        git checkout -q -f -m --detach `<branch>`
->        git checkout -q -f -m --detach `<commit>`
->        git checkout -q -f -m -b|-B|--orphan `<new_branch>` `<start_point>`
->        git checkout -f|--ours|--theirs|-m|--conflict=`<style>` <tree-ish> -- `<paths>`...
->        git checkout -p|--patch <tree-ish> -- `<paths>`...
+    git checkout -q -f -m `<branch>`
+    git checkout -q -f -m --detach `<branch>`
+    git checkout -q -f -m --detach `<commit>`
+    git checkout -q -f -m -b|-B|--orphan `<new_branch>` `<start_point>`
+    git checkout -f|--ours|--theirs|-m|--conflict=`<style>` <tree-ish> -- `<paths>`...
+    git checkout -p|--patch <tree-ish> -- `<paths>`...
 
 git checkout `<branch>`
 
-    > To prepare for working on `<branch>`, switch to it by updating the
-    > index and the files in the working tree, and by pointing HEAD at
-    > the branch. Local modifications to the files in the working tree
-    > are kept, so that they can be committed to the `<branch>`.
-    >
-    > If `<branch>` is not found but there does exist a tracking branch in
-    > exactly one remote (call it `<remote>`) with a matching name, treat
-    > as equivalent to
+     To prepare for working on `<branch>`, switch to it by updating the
+     index and the files in the working tree, and by pointing HEAD at
+     the branch. Local modifications to the files in the working tree
+     are kept, so that they can be committed to the `<branch>`.
+
+     If `<branch>` is not found but there does exist a tracking branch in
+     exactly one remote (call it `<remote>`) with a matching name, treat
+     as equivalent to
 
 $ git checkout -b `<branch>` --track `<remote>`/`<branch>`
 
-> You could omit `<branch>`, in which case the command degenerates to
-> "check out the current branch", which is a glorified no-op with a
-> rather expensive side-effects to show only the tracking
-> information, if exists, for the current branch.
+     You could omit `<branch>`, in which case the command degenerates to
+     "check out the current branch", which is a glorified no-op with a
+     rather expensive side-effects to show only the tracking
+     information, if exists, for the current branch.
 
 
 
@@ -85,47 +86,51 @@ $ git checkout -b `<branch>` --track `<remote>`/`<branch>`
 
 `git-merge` - Join two or more development histories together
 
->   git merge -n --stat --no-commit --squash --no-edit
->           -s `<strategy>` -X <strategy-option> -S<key-id>
->           --no-rerere-autoupdate -m `<msg>` `<commit>`...
->   git merge `<msg>` HEAD `<commit>`...
->   git merge --abort
->   
+    git merge -n --stat --no-commit --squash --no-edit
+       -s `<strategy>` -X <strategy-option> -S<key-id>
+       --no-rerere-autoupdate -m `<msg>` `<commit>`...
+    git merge `<msg>` HEAD `<commit>`...
+    git merge --abort
+
 
 # `git config` [options]
 
 Config file location
+
     --global              use global config file
     --system              use system config file
     --local               use repository config file
     -f, --file <file>     use given config file
     --blob <blob-id>      read config from given blob object
 
->     --get                 get value: name [value-regex]
->     --get-all             get all values: key [value-regex]
->     --get-regexp          get values for regexp: name-regex [value-regex]
->     --get-urlmatch        get value specific for the URL: section[.var] URL
->     --replace-all         replace all matching variables: name value [value_regex]
->     --add                 add a new variable: name value
->     --unset               remove a variable: name [value-regex]
->     --unset-all           remove all matches: name [value-regex]
->     --rename-section      rename section: old-name new-name
->     --remove-section      remove a section: name
->     -l, --list            list all
->     -e, --edit            open an editor
->     --get-color <slot>    find the color configured: [default]
->     --get-colorbool <slot>
->                           find the color setting: [stdout-is-tty]
->
-> Type
->     --bool                value is "true" or "false"
->     --int                 value is decimal number
->     --bool-or-int         value is --bool or --int
->     --path                value is a path (file or directory name)
->
-> Other
->     -z, --null            terminate values with NUL byte
->     --includes            respect include directives on lookup
+
+     --get                 get value: name [value-regex]
+     --get-all             get all values: key [value-regex]
+     --get-regexp          get values for regexp: name-regex [value-regex]
+     --get-urlmatch        get value specific for the URL: section[.var] URL
+     --replace-all         replace all matching variables: name value [value_regex]
+     --add                 add a new variable: name value
+     --unset               remove a variable: name [value-regex]
+     --unset-all           remove all matches: name [value-regex]
+     --rename-section      rename section: old-name new-name
+     --remove-section      remove a section: name
+     -l, --list            list all
+     -e, --edit            open an editor
+     --get-color <slot>    find the color configured: [default]
+     --get-colorbool <slot>
+                           find the color setting: [stdout-is-tty]
+
+ Type
+
+     --bool                value is "true" or "false"
+     --int                 value is decimal number
+     --bool-or-int         value is --bool or --int
+     --path                value is a path (file or directory name)
+
+ Other
+
+     -z, --null            terminate values with NUL byte
+     --includes            respect include directives on lookup
 
 
 #FULL COMMAND LIST:
