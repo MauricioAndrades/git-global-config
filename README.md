@@ -33,7 +33,7 @@ Whenever you're confused about git, come read this cheat sheet. Remember that al
 #### Commit changes in staged files
 `$ git commit -m "<commit message>"` - __Fill Me Out__
 
-#### Branching
+####Branching
 `$ git branch <branch name>` - __Fill Me Out__
 
 `$ git branch` - List, create, or delete branches
@@ -50,15 +50,17 @@ Whenever you're confused about git, come read this cheat sheet. Remember that al
 
 `$ git checkout <branch name>` - Checkout a branch or paths to the working tree
 
-SYNOPSIS
-       git checkout -q -f -m `<branch>`
-       git checkout -q -f -m --detach `<branch>`
-       git checkout -q -f -m --detach `<commit>`
-       git checkout -q -f -m -b|-B|--orphan `<new_branch>` `<start_point>`
-       git checkout -f|--ours|--theirs|-m|--conflict=`<style>` <tree-ish> -- `<paths>`...
-       git checkout -p|--patch <tree-ish> -- `<paths>`...
+#### Synopsis:
+
+>        git checkout -q -f -m `<branch>`
+>        git checkout -q -f -m --detach `<branch>`
+>        git checkout -q -f -m --detach `<commit>`
+>        git checkout -q -f -m -b|-B|--orphan `<new_branch>` `<start_point>`
+>        git checkout -f|--ours|--theirs|-m|--conflict=`<style>` <tree-ish> -- `<paths>`...
+>        git checkout -p|--patch <tree-ish> -- `<paths>`...
 
 git checkout `<branch>`
+
 > To prepare for working on `<branch>`, switch to it by updating the
 > index and the files in the working tree, and by pointing HEAD at
 > the branch. Local modifications to the files in the working tree
