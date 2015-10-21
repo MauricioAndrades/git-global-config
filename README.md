@@ -1,6 +1,33 @@
 ## Cheat Sheet
 
-Whenever you're confused about git, come read this cheat sheet. Remember that all git commands can be run with the `--help` option. For example:
+usage comm:
+
+    git clone url
+    git init
+    git init --bare
+    git update-server-info
+
+    git add file1 file(n)
+    git add dir
+    git add .
+    git rm file1 file(n)
+    git commit -a -m "message"
+
+    git push remote branch: update remote(defaultname: origin)
+    git pull remote (default name: origin)
+
+    git diff
+    git diff --cached
+    git diff HEAD
+    git diff rev [path(s)]
+    git status
+
+    git show rev:file
+    git ls-files [-t]
+    git ls-files --others
+    git log
+    git log [path(s)]
+
 
 `$ git branch --help` or `$git log --help`
 
@@ -12,7 +39,14 @@ Whenever you're confused about git, come read this cheat sheet. Remember that al
 #### Repo Status
 `$ git status` - Check the status of your current repository and see which files have changed.
 
-`$ git diff` - __Fill Me Out__
+`$ git diff` - Show changes between commits, commit and working tree, etc
+
+    git diff [options] [<commit>] [--] [<path>...]
+    git diff [options] --cached [<commit>] [--] [<path>...]
+    git diff [options] <commit> <commit> [--] [<path>...]
+    git diff [options] <blob> <blob>
+    git diff [options] [--no-index] [--] <path> <path>
+
 
 #### Repo History
 `$ git log` - __Fill Me Out__
@@ -41,15 +75,150 @@ Whenever you're confused about git, come read this cheat sheet. Remember that al
 `$ git branch` - List, create, or delete branches
 
     git branch --color=`<when>` | --no-color -r | -a
-            --list -v --abbrev=`<length>` | --no-abbrev
-            --column=`<options>` | --no-column
-            (--merged | --no-merged | --contains) `<commit>` `<pattern>`...
+       --list -v --abbrev=`<length>` | --no-abbrev
+       --column=`<options>` | --no-column
+    (--merged | --no-merged | --contains) `<commit>` `<pattern>`...
     git branch --set-upstream | --track | --no-track -l -f `<branchname>` <start-point>
     git branch (--set-upstream-to=`<upstream>` | -u `<upstream>`) `<branchname>`
     git branch --unset-upstream `<branchname>`
     git branch (-m | -M) `<oldbranch>` `<newbranch>`
     git branch (-d | -D) -r `<branchname>`...
     git branch --edit-description `<branchname>`
+
+    -d, --delete
+Delete a branch. The branch must be fully merged in its upstream
+branch, or in HEAD if no upstream was set with --track or
+--set-upstream.
+
+    -D
+Delete a branch irrespective of its merged status.
+
+    -l, --create-reflog
+Create the branch's reflog. This activates recording of all changes
+made to the branch ref, enabling use of date based sha1 expressions
+such as "<branchname>@{yesterday}". Note that in non-bare
+repositories, reflogs are usually enabled by default by the
+core.logallrefupdates config option.
+
+    -f, --force
+Reset <branchname> to <startpoint> if <branchname> exists already.
+Without -fgit branch refuses to change an existing branch.
+
+    -m, --move
+Move/rename a branch and the corresponding reflog.
+
+    -M
+Move/rename a branch even if the new branch name already exists.
+
+    --color[=<when>]
+Color branches to highlight current, local, and remote-tracking
+branches. The value must be always (the default), never, or auto.
+
+    --no-color
+Turn off branch colors, even when the configuration file gives the
+default to color output. Same as --color=never.
+
+    --column[=<options>], --no-column
+Display branch listing in columns. See configuration variable
+column.branch for option syntax.--column and --no-column without
+options are equivalent to always and never respectively.
+This option is only applicable in non-verbose mode.
+
+    -r, --remotes
+List or delete (if used with -d) the remote-tracking branches.
+
+    -a, --all
+List both remote-tracking branches and local branches.
+
+    --list
+Activate the list mode.  git branch <pattern> would try to create a
+branch, use git branch --list <pattern> to list matching branches.
+
+    -v, -vv, --verbose
+When in list mode, show sha1 and commit subject line for each head,
+along with relationship to upstream branch (if any). If given
+twice, print the name of the upstream branch, as well (see also git
+remote show <remote>).
+
+    -q, --quiet
+Be more quiet when creating or deleting a branch, suppressing
+non-error messages.
+
+    --abbrev=<length>
+Alter the sha1's minimum display length in the output listing. The
+default value is 7 and can be overridden by the core.abbrev config
+option.
+
+    --no-abbrev
+Display the full sha1s in the output listing rather than
+abbreviating them.
+
+    -t, --track
+When creating a new branch, set up branch.<name>.remote and
+branch.<name>.merge configuration entries to mark the start-point
+branch as "upstream" from the new branch. This configuration will
+tell git to show the relationship between the two branches in git
+status and git branch -v. Furthermore, it directs git pull without
+arguments to pull from the upstream when the new branch is checked
+out.
+This behavior is the default when the start point is a
+remote-tracking branch. Set the branch.autosetupmerge configuration
+variable to false if you want git checkout and git branch to always
+behave as if --no-track were given. Set it to always if you want
+this behavior when the start-point is either a local or
+remote-tracking branch.
+
+    --no-track
+Do not set up "upstream" configuration, even if the
+branch.autosetupmerge configuration variable is true.
+
+    --set-upstream
+If specified branch does not exist yet or if --force has been
+given, acts exactly like --track. Otherwise sets up configuration
+like --track would when creating the branch, except that where
+branch points to is not changed.
+
+    -u <upstream>, --set-upstream-to=<upstream>
+Set up <branchname>'s tracking information so <upstream> is
+considered <branchname>'s upstream branch. If no <branchname> is
+specified, then it defaults to the current branch.
+
+    --unset-upstream
+Remove the upstream information for <branchname>. If no branch is
+specified it defaults to the current branch.
+
+    --edit-description
+Open an editor and edit the text to explain what the branch is for,
+to be used by various other commands (e.g.  request-pull).
+
+    --contains [<commit>]
+Only list branches which contain the specified commit (HEAD if not
+specified). Implies --list.
+
+    --merged [<commit>]
+Only list branches whose tips are reachable from the specified
+commit (HEAD if not specified). Implies --list.
+
+    --no-merged [<commit>]
+Only list branches whose tips are not reachable from the specified
+commit (HEAD if not specified). Implies --list.
+
+    <branchname>
+The name of the branch to create or delete. The new branch name
+must pass all checks defined by git-check-ref-format(1). Some of
+these checks may restrict the characters allowed in a branch name.
+
+    <start-point>
+The new branch head will point to this commit. It may be given as a
+branch name, a commit-id, or a tag. If this option is omitted, the
+current HEAD will be used instead.
+
+    <oldbranch>
+The name of an existing branch to rename.
+
+    <newbranch>
+The new name for an existing branch. The same restrictions as for
+<branchname> apply.
 
 `$ git checkout <branch name>` - Checkout a branch or paths to the working tree
 
@@ -86,11 +255,10 @@ $ git checkout -b `<branch>` --track `<remote>`/`<branch>`
 
 `git-merge` - Join two or more development histories together
 
-    git merge -n --stat --no-commit --squash --no-edit
-       -s `<strategy>` -X <strategy-option> -S<key-id>
-       --no-rerere-autoupdate -m `<msg>` `<commit>`...
-    git merge `<msg>` HEAD `<commit>`...
-    git merge --abort
+####useful comm:
+
+    git-merge [--no]|--commit: perform merge and commit.
+    git-merge --stat : show diffstat
 
 
 # `git config` [options]
@@ -118,7 +286,7 @@ Config file location
      -e, --edit            open an editor
      --get-color <slot>    find the color configured: [default]
      --get-colorbool <slot>
-                           find the color setting: [stdout-is-tty]
+                   find the color setting: [stdout-is-tty]
 
  Type
 
