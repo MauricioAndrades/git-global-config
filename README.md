@@ -15,7 +15,7 @@
 // view origin url
 `alias grso=" git remote show origin"`
 
-// view recent 
+// view recent
 `alias grecent=" git recent -a"`
 
 // view relationship between two repos
