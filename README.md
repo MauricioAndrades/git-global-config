@@ -3,22 +3,31 @@
 
 `alias gsbc=" git show-branch --current"`
 
+
 `alias gconfig=" git config --list"`
 
+// view origin url
 `alias gfrom=" git config --get remote.origin.url"`
 
+// add origin
 `alias grao=" git remote add origin"`
 
+// view origin url
 `alias grso=" git remote show origin"`
 
+// view recent 
 `alias grecent=" git recent -a"`
 
+// view relationship between two repos
 `alias gitrel=" git relation $1 $2"`
 
+// clear the index cache
 `alias grmcached="git rm -r --cached ."`
 
+// self explanatory
 `alias gadot="git add ."`
 
+// remove untracked files from index
 `alias grmig="git ls-files --ignored --exclude-standard | xargs git rm --cached"`
 
 
