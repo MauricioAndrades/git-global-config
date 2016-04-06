@@ -1,25 +1,33 @@
-## Cheat Sheet 
+# Essential Git Commands
 
-Whenever you're confused about git, come read this cheat sheet. Remember that all git commands can be run with the `--help` option. For example: 
 
-`$ git branch --help` or `$git log --help`
+`alias gsbc=" git show-branch --current"`
 
-### Essential Git Commands
+`alias gconfig=" git config --list"`
 
-####Create a new git repository
-`$ git init` - Create a new, local repository
+`alias gfrom=" git config --get remote.origin.url"`
 
-#### Repo Status
-`$ git status` - Check the status of your current repository and see which files have changed.
+`alias grao=" git remote add origin"`
 
-`$ git diff` - __Fill Me Out__
+`alias grso=" git remote show origin"`
 
-#### Repo History
-`$ git log` - __Fill Me Out__
+`alias grecent=" git recent -a"`
 
-`$ git log --oneline --decorate --color --graph --all` - __Fill Me Out__
+`alias gitrel=" git relation $1 $2"`
 
-`$ git log -p [filename]` __Fill Me Out__
+`alias grmcached="git rm -r --cached ."`
+
+`alias gadot="git add ."`
+
+`alias grmig="git ls-files --ignored --exclude-standard | xargs git rm --cached"`
+
+
+# Repo History
+`$ git log`
+
+`$ git log --oneline --decorate --color --graph --all`
+
+`$ git log -p [filename]`
 
 #### Stage files to commit
 `$ git add <filename>` - Add file contents to the index
@@ -31,8 +39,6 @@ Whenever you're confused about git, come read this cheat sheet. Remember that al
 `$ git commit -m "<commit message>"` - __Fill Me Out__
 
 ####Branching
-
-`$ git branch <branch name>` - __Fill Me Out__
 
 `$ git branch` - List, create, or delete branches
 
