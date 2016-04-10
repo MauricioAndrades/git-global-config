@@ -1,156 +1,76 @@
-# Essential Git Commands
+# Global GitConfig
+
+## Global Git Config
+[user]
+    name = localUser
+    email = localUserEmail
+
+[credential]
+    helper = osxkeychain
+
+[filter "lfs"]
+    clean = git-lfs clean %f
+    smudge = git-lfs smudge %f
+    required = true
+
+[alias]
+    co = checkout
+    loglast = log -1 HEAD
+    undo= reset --soft HEAD^
+    rmc = rm --cached -r .
+    lsf = ls-files -s
+    bp = big-picture
+
+[alias]
+    lg  = !"git lg1-specific --all"
+    lg2 = !"git lg2-specific --all"
+    lg3 = !"git lg3-specific --all"
+
+    lg1-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(yellow)%d%C(reset)'
+
+    lg2-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%n'
+
+    lg3-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(yellow)%d%C(reset)'' %C(white)%s%C(reset)'' %C(dim white)- %cn %C(reset) %C(dim white)'
+    
+[push]
+    default = simple
+[core]
+    excludesfile = /Users/Op/.gitignore_global
+[difftool "sourcetree"]
+    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+    path =
+[mergetool "sourcetree"]
+    cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+    trustExitCode = true
 
 
-`alias gsbc=" git show-branch --current"`
+```shell
 
+# ls current branch
+alias gsbc=" git show-branch --current"
 
-`alias gconfig=" git config --list"`
+# ls config
+alias gconfig=" git config --list"
 
-// view origin url
+# show origin
+alias gfrom=" git config --get remote.origin.url"
 
-`alias gfrom=" git config --get remote.origin.url"`
+# view recent
+alias grecent=" git recent -a"
 
-// add origin
+# view relationship between two repos
+alias gitrel=" git relation $1 $2"
 
-`alias grao=" git remote add origin"`
+# clear the index cache
+alias grmcached="git rm -r --cached ."
 
-// view origin url
+# self explanatory
+alias gadot="git add ."
 
-`alias grso=" git remote show origin"`
+# remove untracked files from index
+alias grmig="git ls-files --ignored --exclude-standard | xargs git rm --cached"
 
-// view recent
-
-`alias grecent=" git recent -a"`
-
-// view relationship between two repos
-
-`alias gitrel=" git relation $1 $2"`
-
-// clear the index cache
-
-`alias grmcached="git rm -r --cached ."`
-
-// self explanatory
-
-`alias gadot="git add ."`
-
-// remove untracked files from index
-
-`alias grmig="git ls-files --ignored --exclude-standard | xargs git rm --cached"`
-
-
-# Repo History
-`$ git log`
-
-`$ git log --oneline --decorate --color --graph --all`
-
-`$ git log -p [filename]`
-
-#### Stage files to commit
-`$ git add <filename>` - Add file contents to the index
-
-`$ git add -A` - Tell the command to automatically stage files that have been modified and deleted, but new files you have not told Git about are not affected.
-
-#### Commit changes in staged files
-
-`$ git commit -m "<commit message>"` - __Fill Me Out__
-
-####Branching
-
-`$ git branch` - List, create, or delete branches
-
-    git branch --color=`<when>` | --no-color -r | -a
-            --list -v --abbrev=`<length>` | --no-abbrev
-            --column=`<options>` | --no-column
-            (--merged | --no-merged | --contains) `<commit>` `<pattern>`...
-    git branch --set-upstream | --track | --no-track -l -f `<branchname>` <start-point>
-    git branch (--set-upstream-to=`<upstream>` | -u `<upstream>`) `<branchname>`
-    git branch --unset-upstream `<branchname>`
-    git branch (-m | -M) `<oldbranch>` `<newbranch>`
-    git branch (-d | -D) -r `<branchname>`...
-    git branch --edit-description `<branchname>`
-
-`$ git checkout <branch name>` - Checkout a branch or paths to the working tree
-
-#### Synopsis:
-
-    git checkout -q -f -m `<branch>`
-    git checkout -q -f -m --detach `<branch>`
-    git checkout -q -f -m --detach `<commit>`
-    git checkout -q -f -m -b|-B|--orphan `<new_branch>` `<start_point>`
-    git checkout -f|--ours|--theirs|-m|--conflict=`<style>` <tree-ish> -- `<paths>`...
-    git checkout -p|--patch <tree-ish> -- `<paths>`...
-
-git checkout `<branch>`
-
-     To prepare for working on `<branch>`, switch to it by updating the
-     index and the files in the working tree, and by pointing HEAD at
-     the branch. Local modifications to the files in the working tree
-     are kept, so that they can be committed to the `<branch>`.
-
-     If `<branch>` is not found but there does exist a tracking branch in
-     exactly one remote (call it `<remote>`) with a matching name, treat
-     as equivalent to
-
-$ git checkout -b `<branch>` --track `<remote>`/`<branch>`
-
-     You could omit `<branch>`, in which case the command degenerates to
-     "check out the current branch", which is a glorified no-op with a
-     rather expensive side-effects to show only the tracking
-     information, if exists, for the current branch.
-
-
-
-#### Merging
-
-`git-merge` - Join two or more development histories together
-
-    git merge -n --stat --no-commit --squash --no-edit
-       -s `<strategy>` -X <strategy-option> -S<key-id>
-       --no-rerere-autoupdate -m `<msg>` `<commit>`...
-    git merge `<msg>` HEAD `<commit>`...
-    git merge --abort
-
-
-# `git config` [options]
-
-Config file location
-
-    --global              use global config file
-    --system              use system config file
-    --local               use repository config file
-    -f, --file <file>     use given config file
-    --blob <blob-id>      read config from given blob object
-
-
-     --get                 get value: name [value-regex]
-     --get-all             get all values: key [value-regex]
-     --get-regexp          get values for regexp: name-regex [value-regex]
-     --get-urlmatch        get value specific for the URL: section[.var] URL
-     --replace-all         replace all matching variables: name value [value_regex]
-     --add                 add a new variable: name value
-     --unset               remove a variable: name [value-regex]
-     --unset-all           remove all matches: name [value-regex]
-     --rename-section      rename section: old-name new-name
-     --remove-section      remove a section: name
-     -l, --list            list all
-     -e, --edit            open an editor
-     --get-color <slot>    find the color configured: [default]
-     --get-colorbool <slot>
-                           find the color setting: [stdout-is-tty]
-
- Type
-
-     --bool                value is "true" or "false"
-     --int                 value is decimal number
-     --bool-or-int         value is --bool or --int
-     --path                value is a path (file or directory name)
-
- Other
-
-     -z, --null            terminate values with NUL byte
-     --includes            respect include directives on lookup
-
+```
 
 #FULL COMMAND LIST:
 
