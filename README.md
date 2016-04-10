@@ -1,5 +1,7 @@
 # Global GitConfig
 
+```shell
+
 [user]
     name = localUser
     email = localUserEmail
@@ -42,6 +44,7 @@
     cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
     trustExitCode = true
 
+```
 
 ```shell
 
