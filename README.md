@@ -1,5 +1,7 @@
 # Global GitConfig
 
+> A General Reference & Backup of my `$HOME/.gitconfig` file. 
+
 ```shell
 
 [user]
