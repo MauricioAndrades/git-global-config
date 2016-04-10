@@ -1,6 +1,5 @@
 # Global GitConfig
 
-## Global Git Config
 [user]
     name = localUser
     email = localUserEmail
